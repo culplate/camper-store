@@ -8,6 +8,8 @@ import { ModalProvider } from "./context/ModalProvider.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <ModalProvider>
       <App />
+    </ModalProvider>
   </React.StrictMode>
 );
