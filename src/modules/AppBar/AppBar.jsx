@@ -1,8 +1,11 @@
+import css from "./AppBar.module.scss";
+import { Navigation } from "./Navigation/Navigation";
+
 const AppBar = () => {
   return (
-    <div>
-      <p>Header</p>
-    </div>
+    <header>
+      <Navigation />
+    </header>
   );
 };
 
