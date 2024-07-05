@@ -24,13 +24,12 @@ export const store = configureStore({
     campers: campersReducer,
     favorites: persistReducer(favPersistConfig, favoritesReducer),
   },
-  middleware: (gdm) => {
+  middleware: (gdm) =>
     gdm({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    });
-  },
+    }),
 });
 
 export const persistor = persistStore(store);

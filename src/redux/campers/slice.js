@@ -1,13 +1,13 @@
-const { createSlice } = require("@reduxjs/toolkit");
-const { fetchCampers } = require("./operations");
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchCampers } from "./operations";
 
 const handlePending = (state) => {
-  state.loading = true;
+  state.isLoading = true;
   state.isError = false;
 };
 
 const handleRejected = (state, action) => {
-  state.loading = false;
+  state.isLoading = false;
   state.isError = true;
   state.error = action.payload;
 };
