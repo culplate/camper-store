@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import css from "./Navigation.module.scss";
 import clsx from "clsx";
+import { Button } from "shared/components";
 
 export const Navigation = () => {
   return (
@@ -22,7 +23,7 @@ export const Navigation = () => {
       >
         Catalogue
       </NavLink>
-
+      <Button title={"Search"} />
       <NavLink
         to={"/favorites"}
         className={({ isActive }) =>

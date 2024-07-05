@@ -1,1 +1,1 @@
-export { default as AppBar } from "./AppBar/AppBar";
+export { default as AppBar } from "./appBar/components/AppBar/AppBar";
