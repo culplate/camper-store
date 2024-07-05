@@ -1,0 +1,24 @@
+.button {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.05em;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 16px 40px;
+  min-width: 160px;
+
+  border: 0;
+  border-radius: 40px;
+
+  color: $light-bg-color;
+  background-color: $accent-color;
+
+  transition: background-color 250ms ease-in;
+
+  &:hover {
+    background-color: $accent-hover-color;
+  }
+}
