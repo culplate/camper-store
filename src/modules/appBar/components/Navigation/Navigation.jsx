@@ -23,7 +23,7 @@ export const Navigation = () => {
       >
         Catalogue
       </NavLink>
-      <Button title={"Search"} />
+
       <NavLink
         to={"/favorites"}
         className={({ isActive }) =>

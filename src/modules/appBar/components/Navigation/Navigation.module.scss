@@ -1,7 +1,16 @@
 .link {
-  color: blue;
-}
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 700;
+  color: $primary-text-color;
+  transition: color 250ms ease-in;
 
-.link.active {
-  color: red;
+  &.active {
+    color: $accent-color;
+  }
+
+  &:hover {
+    color: $accent-hover-color;
+  }
 }

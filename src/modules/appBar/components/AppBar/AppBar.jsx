@@ -3,7 +3,7 @@ import { Navigation } from "../Navigation/Navigation";
 
 const AppBar = () => {
   return (
-    <header>
+    <header className={css.header}>
       <Navigation />
     </header>
   );
