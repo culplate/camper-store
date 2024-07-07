@@ -1,6 +1,7 @@
 import { selectCampers } from "@redux/campers/selectors";
 import { useSelector } from "react-redux";
 import { CamperCard } from "../CamperCard/CamperCard";
+import css from "./CamperList.module.scss";
 
 const CamperList = () => {
   const campers = useSelector(selectCampers);
@@ -23,7 +24,7 @@ const CamperList = () => {
       })}
     </ul>
   ) : (
-    <p>No results corresponding your filters.</p>
+    <p className={css.noResults}>No results corresponding your filters.</p>
   );
 };
 

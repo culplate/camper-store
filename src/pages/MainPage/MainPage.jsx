@@ -7,8 +7,11 @@ const MainPage = () => {
       <section className={css.content}>
         <h2>We care about your trips!</h2>
         <p>
-          Explore a wide range of camping gear, from tents to cooking equipment.
-          Your adventure starts here!
+          Explore a wide range of campers, from vans to fully integrated models.
+        </p>
+        <p>
+          We also offer comprehensive maintenance and repair services to keep
+          your vehicle in top condition. Your adventure starts here!
         </p>
         <Link to="/catalogue" className={css.btn}>
           Shop Now
