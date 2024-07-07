@@ -12,6 +12,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { favoritesReducer } from "./favorites/slice";
+import { filtersReducer } from "./filters/slice";
 
 const favPersistConfig = {
   key: "favorites",
@@ -23,6 +24,7 @@ export const store = configureStore({
   reducer: {
     campers: campersReducer,
     favorites: persistReducer(favPersistConfig, favoritesReducer),
+    filters: filtersReducer,
   },
   middleware: (gdm) =>
     gdm({

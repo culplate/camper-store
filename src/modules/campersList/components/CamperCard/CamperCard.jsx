@@ -14,6 +14,7 @@ export const CamperCard = ({ item }) => {
       <div>
         <div className={css.headingWrap}>
           <h2 className={css.title}>{item.name}</h2>
+          <h3>{item.form}</h3>
           <h2 className={css.title}>{`€${item.price}.00`}</h2>
         </div>
 
