@@ -2,10 +2,14 @@ import { selectCampers } from "@redux/campers/selectors";
 import { useSelector } from "react-redux";
 import { CamperCard } from "../CamperCard/CamperCard";
 import css from "./CamperList.module.scss";
+import { useState } from "react";
+import { Button } from "shared/components";
 
 const CamperList = () => {
   const campers = useSelector(selectCampers);
   const filters = useSelector((state) => state.filters);
+  const [visibleCampers, setVisibleCampers] = useState(4);
+  const loadMore = () => setVisibleCampers((prev) => prev + 4);
 
   const filteredCampers = campers.filter((camper) => {
     if (filters.form.length > 0 && !filters.form.includes(camper.form))
@@ -18,11 +22,20 @@ const CamperList = () => {
   });
 
   return filteredCampers.length > 0 ? (
-    <ul>
-      {filteredCampers.map((camper) => {
-        return <CamperCard item={camper} key={camper._id} />;
-      })}
-    </ul>
+    <div className={css.wrap}>
+      <ul>
+        {filteredCampers.slice(0, visibleCampers).map((camper) => {
+          return <CamperCard item={camper} key={camper._id} />;
+        })}
+      </ul>
+      {visibleCampers < filteredCampers.length && (
+        <Button
+          title={"Load more"}
+          onClick={loadMore}
+          className={css.loadBtn}
+        />
+      )}
+    </div>
   ) : (
     <p className={css.noResults}>No results corresponding your filters.</p>
   );

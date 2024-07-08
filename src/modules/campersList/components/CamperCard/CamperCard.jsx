@@ -2,8 +2,23 @@ import { Button } from "shared/components";
 import css from "./CamperCard.module.scss";
 import { icons } from "shared/icons";
 import { FeaturedList } from "../FeaturedList/FeaturedList";
+import { useModal } from "hooks/useModal";
+import { useCallback } from "react";
+import { CamperModal } from "../CamperModal/CamperModal";
 
 export const CamperCard = ({ item }) => {
+  const setModal = useModal();
+
+  const closeModal = useCallback(() => {
+    setModal();
+  }, [setModal]);
+
+  const openModal = useCallback((initTab) => {
+    setModal(
+      <CamperModal item={item} onClose={closeModal} initTab={initTab} />
+    );
+  });
+
   return (
     <li className={css.card}>
       <img
@@ -17,7 +32,7 @@ export const CamperCard = ({ item }) => {
           <h2 className={css.title}>{`€${item.price}.00`}</h2>
         </div>
 
-        <button>
+        <button onClick={() => openModal("reviews")}>
           <svg width={16} height={16} className={css.icon}>
             <use xlinkHref={`${icons}#rating`}></use>
           </svg>
@@ -29,7 +44,7 @@ export const CamperCard = ({ item }) => {
         <p className={css.description}>{item.description}</p>
 
         <FeaturedList item={item} />
-        <Button title={"Show More"} />
+        <Button title={"Show More"} onClick={() => openModal("features")} />
       </div>
     </li>
   );

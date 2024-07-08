@@ -1,0 +1,60 @@
+.modalWrap {
+  background-color: $light-bg-color;
+  border-radius: 20px;
+  padding: 40px;
+  max-height: 720px;
+  width: 982px;
+  overflow-y: scroll;
+}
+
+.imgWrap {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin: 24px 0;
+
+  .img {
+    width: 290px;
+    height: 310px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+}
+
+.tabs {
+  border-bottom: 1px solid $border-color;
+  display: flex;
+  gap: 40px;
+
+  .tabBtn {
+    padding: 24px 0;
+    position: relative;
+
+    &.active::after {
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      background-color: $accent-color;
+      content: "";
+      width: 100%;
+      height: 5px;
+    }
+  }
+}
+
+.tabContent {
+  display: flex;
+  flex-direction: row;
+  margin-top: 44px;
+}
+
+.tabWrap {
+  width: 448px;
+}
+
+.formWrap {
+  width: 448px;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  padding: 24px;
+}
