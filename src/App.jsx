@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { SharedLayout } from "shared/components";
 import { CataloguePage, FavoritesPage, MainPage } from "./pages";
 import { useDispatch } from "react-redux";
@@ -20,6 +20,7 @@ function App() {
           <Route path="/catalogue" element={<CataloguePage />} />
           <Route path="/favorites" element={<FavoritesPage />} />
         </Route>
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );
