@@ -32,3 +32,37 @@
 
   object-fit: cover;
 }
+
+.headingWrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.priceWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.favBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  .favIcon {
+    fill: none;
+    stroke: black;
+
+    &.active {
+      fill: $accent-color;
+      stroke: $accent-color;
+      :hover {
+        fill: $accent-hover-color;
+        stroke: $accent-hover-color;
+      }
+    }
+  }
+}

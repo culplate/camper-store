@@ -5,9 +5,16 @@ import { FeaturedList } from "../FeaturedList/FeaturedList";
 import { useModal } from "hooks/useModal";
 import { useCallback } from "react";
 import { CamperModal } from "../CamperModal/CamperModal";
+import clsx from "clsx";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFavorite } from "@redux/favorites/slice";
+import { selectFavorites } from "@redux/favorites/selectors";
 
 export const CamperCard = ({ item }) => {
+  const dispatch = useDispatch();
   const setModal = useModal();
+  const favorites = useSelector(selectFavorites);
+  const liked = favorites.includes(item._id);
 
   const closeModal = useCallback(() => {
     setModal();
@@ -29,7 +36,21 @@ export const CamperCard = ({ item }) => {
       <div>
         <div className={css.headingWrap}>
           <h2 className={css.title}>{item.name}</h2>
-          <h2 className={css.title}>{`€${item.price}.00`}</h2>
+          <div className={css.priceWrap}>
+            <h2 className={css.title}>{`€${item.price}.00`}</h2>
+            <button
+              className={css.favBtn}
+              onClick={() => dispatch(toggleFavorite(item._id))}
+            >
+              <svg
+                width={24}
+                height={24}
+                className={clsx(css.favIcon, liked ? css.active : "")}
+              >
+                <use xlinkHref={`${icons}#heart`}></use>
+              </svg>
+            </button>
+          </div>
         </div>
 
         <button onClick={() => openModal("reviews")}>

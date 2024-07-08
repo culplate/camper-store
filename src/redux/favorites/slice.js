@@ -6,15 +6,17 @@ const favoritesSlice = createSlice({
     items: [],
   },
   reducers: {
-    addFavorite(state, action) {
-      state.items.push(action.payload);
-    },
-    removeFavorite(state, action) {
-      const idx = state.items.findIndex((item) => item.id === action.payload);
-      state.items.splice(idx, 1);
+    toggleFavorite(state, action) {
+      if (state.items.includes(action.payload)) {
+        const idx = state.items.indexOf(action.payload);
+        state.items.splice(idx, 1);
+        return;
+      } else {
+        state.items.push(action.payload);
+      }
     },
   },
 });
 
-export const { addFavorite, removeFavorite } = favoritesSlice.actions;
+export const { toggleFavorite } = favoritesSlice.actions;
 export const favoritesReducer = favoritesSlice.reducer;
