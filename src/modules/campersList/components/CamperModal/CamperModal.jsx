@@ -2,6 +2,8 @@ import { useState } from "react";
 import css from "./CamperModal.module.scss";
 import { icons } from "shared/icons";
 import clsx from "clsx";
+import { FeaturedList } from "../FeaturedList/FeaturedList";
+import { capitalize } from "helpers/index";
 
 export const CamperModal = ({ item, onClose, initTab }) => {
   const [activeTab, setActiveTab] = useState(initTab);
@@ -63,9 +65,50 @@ export const CamperModal = ({ item, onClose, initTab }) => {
 
         <div className={css.tabContent}>
           {activeTab === "features" ? (
-            <div className={css.tabWrap}>Features</div>
+            <div className={css.tabWrap}>
+              <FeaturedList item={item} />
+              <h3 className={css.title}>Vehicle details</h3>
+              <div className={css.vehicleDetails}>
+                <div className={css.detailItem}>
+                  <span className={css.label}>Form</span>
+                  <span className={css.value}>{capitalize(item.form)}</span>
+                </div>
+                <div className={css.detailItem}>
+                  <span className={css.label}>Length</span>
+                  <span className={css.value}>{item.length}</span>
+                </div>
+                <div className={css.detailItem}>
+                  <span className={css.label}>Width</span>
+                  <span className={css.value}>{item.width}</span>
+                </div>
+                <div className={css.detailItem}>
+                  <span className={css.label}>Height</span>
+                  <span className={css.value}>{item.height}</span>
+                </div>
+                <div className={css.detailItem}>
+                  <span className={css.label}>Tank</span>
+                  <span className={css.value}>{item.tank}</span>
+                </div>
+                <div className={css.detailItem}>
+                  <span className={css.label}>Consumption</span>
+                  <span className={css.value}>{item.consumption}</span>
+                </div>
+              </div>
+            </div>
           ) : (
-            <div className={css.tabWrap}>Reviews</div>
+            <div className={css.tabWrap}>
+              <ul>
+                {item.reviews.map((it) => {
+                  return (
+                    <li key={it.reviewer_name}>
+                      <h3>{it.reviewer_name}</h3>
+                      <p>Rating: {it.reviewer_rating}</p>
+                      <p>{it.comment}</p>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           )}
           <div className={css.formWrap}>
             <p>Contact form</p>
