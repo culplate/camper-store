@@ -1,11 +1,8 @@
+import { capitalize } from "helpers/index";
 import css from "./FeaturedList.module.scss";
 import { icons } from "shared/icons";
 
 export const FeaturedList = ({ item }) => {
-  function capitalize(word) {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  }
-
   return (
     <div className={css.container}>
       <div className={css.detailWrap}>
